@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Silicon_WebApp.ViewModels;
 
 namespace Silicon_WebApp.Controllers;
 
@@ -6,6 +7,24 @@ public class AccountController : Controller
 {
     public IActionResult Details()
     {
-        return View();
+        var viewModel = new AccountDetailsViewModel();
+        return View(viewModel);
+    }
+
+
+    [HttpPost]
+    public IActionResult UpdateBasicInfo(AccountDetailsViewModel model)
+    {
+
+        TempData["StatusMessage"] = "Unable to save information.";
+        return RedirectToAction("Details", "Account");
+    }
+
+
+    [HttpPost]
+    public IActionResult UpdateAddressInfo(AccountDetailsViewModel model)
+    {
+        TempData["StatusMessage"] = "Unable to save information.";
+        return RedirectToAction("Details", "Account");
     }
 }
