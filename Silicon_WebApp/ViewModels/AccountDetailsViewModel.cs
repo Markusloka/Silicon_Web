@@ -6,7 +6,7 @@ public class AccountDetailsViewModel
 {
     public AccountBasicInfo? Basic { get; set; }
 
-    public AccountBasicInfo? Address { get; set; }
+    public AccountAddressInfo? Address { get; set; }
 }
 
 

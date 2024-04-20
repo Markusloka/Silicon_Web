@@ -11,7 +11,7 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
 {
     private readonly UserManager<UserEntity> _userManager = userManager;
     private readonly SignInManager<UserEntity> _signInManager = signInManager;
-    private readonly ApplicationContext _context;
+    private readonly ApplicationContext _context = context;
 
     [Route("/signup")]
     public IActionResult SignUp()
@@ -35,7 +35,7 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
                     FirstName = model.FirstName,
                     LastName = model.LastName,
                 };
-                if ( (await _userManager.CreateAsync(userEntity, model.Password)).Succeeded)
+                if ((await _userManager.CreateAsync(userEntity, model.Password)).Succeeded)
                 {
                     if((await _signInManager.PasswordSignInAsync(model.Email, model.Password,false , false)).Succeeded)
                         return LocalRedirect("/");
