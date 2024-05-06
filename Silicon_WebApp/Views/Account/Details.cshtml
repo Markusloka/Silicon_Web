@@ -3,10 +3,11 @@
 @{
     ViewData["Title"] = "Account Details";
 }
-
-
 <section class="account-details">
     <div class="container">
+
+
+
 
         @if (!string.IsNullOrEmpty(ViewData["StatusMessage"]?.ToString()))
         {
@@ -14,6 +15,13 @@
                 @ViewData["StatusMessage"]
             </div>
         }
+
+
+        <aside>
+            <partial name ="~/Views/Account/_AccountProfile.cshtml" />
+        </aside>
+
+
 
         <div class="details">
             <section class="basic-info">
@@ -47,7 +55,7 @@
                         </div>
                         <div class="form-buttons">
                             <button class="btn-gray" type="reset">Cancel</button>
-                            <button class="btn-theme" type="submit" asp-controller="Account" asp-action="Details">Save changes</button>
+                            <button class="btn-theme" type="submit" asp-controller="Account" asp-action="UpdateBasicInfo">Save changes</button>
                         </div>
                     </div>
                 </form>
@@ -60,7 +68,7 @@
                     <div class="content">
                         <div id="form-addressline-1" class="input-group">
                             <label asp-for="Address!.AddressLine_1!">Address line 1</label>
-                            <span asp-validation-for="Address.AddressLine_1!"></span>
+                            <span asp-validation-for="Address!.AddressLine_1!"></span>
                             <input asp-for="Address!.AddressLine_1!" />
                         </div>
                         <div id="form-addressline-2" class="input-group">
@@ -80,7 +88,7 @@
                         </div>
                         <div class="form-buttons">
                             <button class="btn-gray" type="reset">Cancel</button>
-                            <button class="btn-theme" type="submit" asp-controller="Account" asp-action="Details">Save changes</button>
+                            <button class="btn-theme" type="submit" asp-controller="Account" asp-action="UpdateAddressInfo">Save changes</button>
                         </div>
                     </div>
                 </form>
